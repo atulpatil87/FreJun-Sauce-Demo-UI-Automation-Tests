@@ -49,6 +49,7 @@ class TestAddToCart:
         cart_page = CartPage(driver)
         cart_items = cart_page.get_cart_items()
         assert len(cart_items) == 2, "Cart does not contain the correct number of products!"
+        cart_page.fill_user_info()
 
         # Verify total price
         total_price = cart_page.get_total_price()
