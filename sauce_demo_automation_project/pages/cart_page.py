@@ -7,7 +7,7 @@ class CartPage:
         self.checkout_button = (By.ID, "checkout")
         self.driver = driver
         self.cart_items = (By.CLASS_NAME, "cart_item")
-        self.cart_total_price = (By.CLASS_NAME, "summary_total_label")
+        self.cart_total_price = (By.CLASS_NAME, "summary_subtotal_label")
 
     from selenium.webdriver.common.by import By
 
@@ -40,3 +40,10 @@ class CartPage:
     def click_checkout(self):
             """Click the checkout button to proceed to checkout"""
             self.driver.find_element(*self.checkout_button).click()
+
+    def fill_user_info(self):
+            self.driver.find_element(By.ID, "checkout").click()
+            self.driver.find_element(By.ID, "first-name").send_keys("John")
+            self.driver.find_element(By.ID, "last-name").send_keys("Doe")
+            self.driver.find_element(By.ID, "postal-code").send_keys("12345")
+            self.driver.find_element(By.ID, "continue").click()
